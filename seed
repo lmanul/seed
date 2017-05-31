@@ -1,0 +1,14 @@
+#!/usr/bin/python
+
+import os
+
+os.system("sudo ls")
+if not os.path.exists(".ssh/id_rsa"):
+  os.system("scp manucornet@ma.nu:.ssh/id_rsa .")
+  if not os.path.exists(".ssh"):
+    os.system("mkdir .ssh")
+  os.system("mv id_rsa .ssh/ && chmod go-rwx .ssh/id_rsa")
+os.system("sudo apt-get -y --force-yes install git")
+os.system("git clone git@github.com:lmanul/bus")
+os.system("./bus/bin/setup")
+os.system("./bus/bin/setup_secondary")
